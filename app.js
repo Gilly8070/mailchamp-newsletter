@@ -2,7 +2,7 @@ const express = require('express');
 const request = require('request');
 const bodyParser = require('body-parser');
 const path = require('path');
-
+// const fetch = require('node-fetch');
 const app = express();
 
 // Bodyparser Middleware
@@ -37,6 +37,19 @@ app.post('/signup', (req, res) => {
 
     const postData = JSON.stringify(data);
 
+//     fetch('https://usX.api.mailchimp.com/3.0/lists/7072f42515', {
+//     method: 'POST',
+//     headers: {
+//         Authorization: 'auth cb5ac97171d3b2866923e962ffb38131-us2'
+//     },
+//     body: postData
+//     })
+//     .then(res.statusCode === 200 ?
+//         res.redirect('/success.html') :
+//         res.redirect('/fail.html'))
+//     .catch(err => console.log(err))
+// })
+
     const options = {
         url: 'https://us2.api.mailchimp.com/3.0/lists/7072f42515',
         method: 'POST',
@@ -61,4 +74,4 @@ app.post('/signup', (req, res) => {
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, console.log(`Server started on ${PORT}`));
+app.listen(PORT, console.log(`Server started on ${PORT}`))
